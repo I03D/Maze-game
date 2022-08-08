@@ -139,8 +139,14 @@ function nextChain(x, y, rot) {
 			break;
 	}
 
+	leftChance = 5;
+
 	needEnd = true;
-	for (chain_end = random(10); chain_end != 0; chain_end = random(2)) {
+	
+	nextChance = 7;
+
+	for (chain_end = random(10); chain_end <= nextChance; chain_end = random(2)) {
+		nextChance -= 1;
 		console.log(`chain_end != 0: ${chain_end}`);	
 		if (node_map[x][y].type == 'connection') {
 			console.log(`На ${x} ${y} уже есть подключение, так что хорошенько подумав, мы...`);
@@ -258,46 +264,54 @@ function nextChain(x, y, rot) {
 			node_map[x][y].type = 'connection';
 			switch (rot) {
 				case 0:
-					if (random(2)) {
+					if (random(10) <= leftChance) {
+						leftChance -= 2;
 						rot = 3;
-						console.log('Ставим ◞.');
+						console.log('Ставим ┛.');
 						node_map[x][y].rotation = 2;
 					} else {
+						leftChance += 2;
 						rot = 1;
-						console.log('Ставим ◝.');
+						console.log('Ставим ┓.');
 						node_map[x][y].rotation = 1;
 					}
 					break;
 				case 1:
-					if (random(2)) {
+					if (random(10) <= leftChance) {
+						leftChance -= 2;
 						rot = 0;
-						console.log('Ставим ◟.');
+						console.log('Ставим ┗.');
 						node_map[x][y].rotation = 3;
 					} else {
+						leftChance += 2;
 						rot = 2;
-						console.log('Ставим ◞.');
+						console.log('Ставим ┛.');
 						node_map[x][y].rotation = 2;
 					}
 					break;
 				case 2:
-					if (random(2)) {
+					if (random(10) <= leftChance) {
+						leftChance -= 2;
 						rot = 1;
-						console.log('Ставим ◜.');
+						console.log('Ставим ┏.');
 						node_map[x][y].rotation = 0;
 					} else {
+						leftChance += 2;
 						rot = 3;
-						console.log('Ставим ◟.');
+						console.log('Ставим ┗.');
 						node_map[x][y].rotation = 3;
 					}
 					break;
 				case 3:
-					if (random(2)) {
+					if (random(10) <= leftChance) {
+						leftChance -= 2;
 						rot = 2;
-						console.log('Ставим ◝.');
+						console.log('Ставим ┓.');
 						node_map[x][y].rotation = 1;
 					} else {
+						leftChance += 2;
 						rot = 0;
-						console.log('Ставим ◜.');
+						console.log('Ставим ┏.');
 						node_map[x][y].rotation = 0;
 					}
 					break;
@@ -373,6 +387,7 @@ function nextChain(x, y, rot) {
 		}*/
 		console.log(`Ставим узел на ${x} ${y}`);
 		node_map[x][y].type = 'node';
+		numberOfNodes += 1;
 		// node_map[x][y].connections += 1;
 		// Здесь нужно будет сделать добавление узла в список доступных.
 		node_links.push([x, y]);
@@ -598,6 +613,8 @@ function generate() {
 	y = random(height);
 	node_map[x][y] = new Node;
 
+	numberOfNodes = 1;
+
 	// Add a link to the array of node_links:
 	node_links.push([x, y]);
 
@@ -622,7 +639,7 @@ function generate() {
 				console.log('На основе занятых сторон решаем добавить путь с 90% шансом...');
 				
 				// Добавить путь с 75% шансом:
-				if (chance <= 90) {
+				if (chance <= 90 || numberOfNodes < 5) {
 					add_path(node_links[0][0], node_links[0][1]);
 					node_map[node_links[0][0]][node_links[0][1]].connections += 1;
 					console.log(`Увеличили счётчик соединений. Теперь у ${node_links[0][0]} ${node_links[0][1]} стало ${node_map[node_links[0][0]][node_links[0][1]].connections} соединений.`);
@@ -636,7 +653,7 @@ function generate() {
 				console.log('На основе занятых сторон решаем добавить путь с 50% шансом...');
 				
 				// Добавить путь с 50% шансом:
-				if (chance <= 50) {
+				if (chance <= 50 || numberOfNodes < 5) {
 					add_path(node_links[0][0], node_links[0][1]);
 					node_map[node_links[0][0]][node_links[0][1]].connections += 1;
 					console.log(`Увеличили счётчик соединений. Теперь у ${node_links[0][0]} ${node_links[0][1]} стало ${node_map[node_links[0][0]][node_links[0][1]].connections} соединений.`);
@@ -650,7 +667,7 @@ function generate() {
 				console.log('На основе занятых сторон решаем добавить путь с 25% шансом...');
 				
 				// Добавить путь с 25% шансом:
-				if (chance <= 25) {
+				if (chance <= 25 || numberOfNodes < 5) {
 					add_path(node_links[0][0], node_links[0][1]);
 					node_map[node_links[0][0]][node_links[0][1]].connections += 1;
 					console.log(`Увеличили счётчик соединений. Теперь у ${node_links[0][0]} ${node_links[0][1]} стало ${node_map[node_links[0][0]][node_links[0][1]].connections} соединений.`);
