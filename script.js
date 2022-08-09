@@ -145,9 +145,8 @@ function nextChain(x, y, rot) {
 	
 	nextChance = 7;
 
-	for (chain_end = random(10); chain_end <= nextChance; chain_end = random(2)) {
-		nextChance -= 1;
-		console.log(`chain_end != 0: ${chain_end}`);	
+	// for (chain_end = random(10); chain_end <= nextChance; chain_end = random(10)) {
+	do {
 		if (node_map[x][y].type == 'connection') {
 			console.log(`На ${x} ${y} уже есть подключение, так что хорошенько подумав, мы...`);
 			if (rot == 0) {
@@ -364,7 +363,12 @@ function nextChain(x, y, rot) {
 		}
 */
 		console.log(`Новый поворот курсора: ${rot}`);
-	}
+
+		chain_end = random(10);
+		console.log(`chain_end != 0: ${chain_end}`);	
+		
+		nextChance -= 1;
+	} while (chain_end <= nextChance);
 
 	console.log(`chain_end == ${chain_end}`);
 	console.log(`needEnd == ${needEnd}`);
@@ -734,6 +738,7 @@ function generate() {
 
 	document.getElementById("submitButton").disabled = false;
 	console.log(node_map);
+	console.log(numberOfNodes);
 }
 
 

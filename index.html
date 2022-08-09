@@ -4,22 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hunt the X</title>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
-	<p id=description></p>
-	<div id=startInterface>
-		<input type="text" id=width>
-		<br>
-		<input type="text" id=height>
-		<br>
-		<input type="text" id="numberOfPits">
-		<br>
-		<button onclick="generate()" id="submitButton">Старт</button>
-		<br>
-		<button onclick="sample()">10 10 3</button>
-		<br>
-		<button onclick="debug_draw()">debug_draw()</button>
+	<div id="interfaces">
+		<fieldset id=customization>
+			<legend>Настройка уровня</legend>
+			<label>Ширина:<input type="text" id=width value="10"></label>
+			<br>
+			Высота:<input type="text" id=height value="10">
+			<br>
+			Количество канав:<input type="text" id="numberOfPits" value="3">
+			<br>
+			<button onclick="generate()" id="submitButton">Старт</button>
+			<br>
+			<button onclick="sample()">10 10 3</button>
+			<br>
+			<button onclick="debug_draw()">debug_draw()</button>
+		</fieldset>
 	</div>
+
 	<div id=field></div>
 	<div id=ps></div>
 	<script src="script.js"></script>

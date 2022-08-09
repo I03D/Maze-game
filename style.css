@@ -1,0 +1,65 @@
+body {
+	background: url('background.png');
+	color: white;
+}
+
+body * {
+	font-size: 50px;
+}
+
+#interfaces {
+	position: relative;
+	left: 25%;
+	top: 10%;
+	width: 50%;
+	height: 50%;
+}
+
+#interfaces input {
+	float: right;
+	clear: both;
+	text-align: left;
+}
+
+.centered {
+	position: relative;
+	left: 25%;
+}
+
+input {
+	background-color: #442e2e;
+	color: white;
+	outline-color: black;
+	border-top-color: black;
+	border-bottom-color: black;
+	border-left-color: black;
+	border-right-color: black;
+	border-radius: 2rem;
+	height: 50px;
+	width: 200px;
+	text-align: center;
+}
+
+fieldset {
+	outline-color: black;
+	border-top-color: black;
+	border-bottom-color: black;
+	border-left-color: black;
+	border-right-color: black;
+}
+
+button + br + button {
+	margin-top: 2px;
+}
+
+button {
+	border-radius: 3rem;
+	width: 100%;
+	background-color: #442e2e;
+	outline-color: black;
+	border-top-color: black;
+	border-bottom-color: black;
+	border-left-color: black;
+	border-right-color: black;
+	color: white;
+}
