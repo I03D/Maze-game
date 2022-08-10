@@ -4,7 +4,7 @@ body {
 }
 
 body * {
-	font-size: 50px;
+	font-size: 2.7vw;
 }
 
 #interfaces {
@@ -15,15 +15,12 @@ body * {
 	height: 50%;
 }
 
-#interfaces input {
-	float: right;
-	clear: both;
-	text-align: left;
+table {
+	width: 100%;
 }
 
-.centered {
-	position: relative;
-	left: 25%;
+td {
+	width: 50%;
 }
 
 input {
@@ -35,9 +32,8 @@ input {
 	border-left-color: black;
 	border-right-color: black;
 	border-radius: 2rem;
-	height: 50px;
-	width: 200px;
 	text-align: center;
+	width: 100%;
 }
 
 fieldset {
@@ -48,13 +44,8 @@ fieldset {
 	border-right-color: black;
 }
 
-button + br + button {
-	margin-top: 2px;
-}
-
 button {
 	border-radius: 3rem;
-	width: 100%;
 	background-color: #442e2e;
 	outline-color: black;
 	border-top-color: black;

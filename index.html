@@ -10,11 +10,20 @@
 	<div id="interfaces">
 		<fieldset id=customization>
 			<legend>Настройка уровня</legend>
-			<label>Ширина:<input type="text" id=width value="10"></label>
-			<br>
-			Высота:<input type="text" id=height value="10">
-			<br>
-			Количество канав:<input type="text" id="numberOfPits" value="3">
+			<table>
+				<tr>
+					<td>Ширина:</td>
+					<td><input type="text" id=width value="10"></td>
+				</tr>
+				<tr>
+					<td>Высота:</td>
+					<td><input type="text" id=height value="10"></div></td>
+				</tr>
+				<tr>
+					<td>Кол-во канав:</td>
+					<td><input type="text" id="numberOfPits" value="3"></div></td>
+				</tr>
+			</table>
 			<br>
 			<button onclick="generate()" id="submitButton">Старт</button>
 			<br>
